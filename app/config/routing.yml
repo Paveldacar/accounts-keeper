@@ -1,4 +1,4 @@
 paveldacar_accounts_keeper:
     resource: "@PaveldacarAccountsKeeperBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /accounts-keeper
 

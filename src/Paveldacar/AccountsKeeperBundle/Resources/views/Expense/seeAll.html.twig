@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Dépenses</h1>
-    <p>Cette page contiendra les dépenses effectuées par {{ user }} au mois de {{ month }}.</p>
+    <p>Cette page contiendra les dépenses effectuées au mois de {{ month }} {{ year }}.</p>
+    <p><a href="{{ path('paveldacar_accounts_keeper_expense_add') }}">Ajouter une dépense.</a></p>
 </body>
 </html>

@@ -1,3 +1,28 @@
-paveldacar_accounts_keeper_expenses:
-    path:     /expense
-    defaults: { _controller: PaveldacarAccountsKeeperBundle:Expense:seeAll }
+paveldacar_accounts_keeper_expense_see_all:
+    path:     /expenses/{month}/{year}
+    defaults: { _controller: PaveldacarAccountsKeeperBundle:Expense:seeAll, month: null, year: null }
+    requirements:
+        month: \d{2}
+        year: \d{4}
+
+paveldacar-accounts_keeper_expense_see_expense:
+    path:     /expenses/{id}
+    defaults: { _controller: PaveldacarAccountsKeeperBundle:Expense:seeExpense }
+    requirements:
+        id: \d+
+
+paveldacar_accounts_keeper_expense_add:
+    path:    /expenses/add
+    defaults: { _controller: PaveldacarAccountsKeeperBundle:Expense:add }
+
+paveldacar_accounts_keeper_expense_edit:
+    path:    /expenses/edit/{id}
+    defaults: { _controller: PaveldacarAccountsKeeperBundle:Expense:edit }
+    requirements:
+        id: \d+
+
+paveldacar_accounts_keeper_expense_delete:
+    path:    /expenses/delete/{id}
+    defaults: { _controller: PaveldacarAccountsKeeperBundle:Expense:delete }
+    requirements:
+        id: \d+
