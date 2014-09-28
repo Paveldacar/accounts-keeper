@@ -1,3 +1,7 @@
 paveldacar_accounts_keeper_homepage:
     path:     /hello/{name}
     defaults: { _controller: PaveldacarAccountsKeeperBundle:Default:index }
+
+paveldacar_accounts_keeper_expenses:
+    path:     /expense
+    defaults: { _controller: PaveldacarAccountsKeeperBundle:Expense:seeAll }
