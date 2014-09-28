@@ -1,0 +1,3 @@
+paveldacar_accounts_keeper_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PaveldacarAccountsKeeperBundle:Default:index }

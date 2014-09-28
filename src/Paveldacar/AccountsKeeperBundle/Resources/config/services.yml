@@ -1,0 +1,7 @@
+parameters:
+#    paveldacar_accounts_keeper.example.class: Paveldacar\AccountsKeeperBundle\Example
+
+services:
+#    paveldacar_accounts_keeper.example:
+#        class: %paveldacar_accounts_keeper.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
