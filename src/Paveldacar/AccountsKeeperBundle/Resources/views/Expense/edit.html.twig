@@ -1,0 +1,9 @@
+return new Response("Affichage de la dépense d'id : " . $id);
+{%  extends 'PaveldacarAccountsKeeperBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Dépense {{ id }}{% endblock %}
+
+{%  block body %}
+    <h1>Dépense {{ id }}</h1>
+    <p>Cette page permettra de modifier la dépense d'id {{ id }} à l'aide d'un formulaire.</p>
+{%  endblock %}

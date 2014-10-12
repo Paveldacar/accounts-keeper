@@ -34,7 +34,7 @@ class ExpenseController extends Controller
             $year = date('Y');
         }
 
-        $content = $this->get('templating')->render('PaveldacarAccountsKeeperBundle:Expense:seeAll.html.twig', [
+        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:seeAll.html.twig', [
             'month' => $months[$month],
             'year'  => $year
         ]);
@@ -44,21 +44,31 @@ class ExpenseController extends Controller
 
     public function seeExpenseAction($id)
     {
-        return new Response("Affichage de la dépense d'id : " . $id);
+        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', [
+            'id' => $id
+        ]);
+
+        return new Response($content);
     }
 
     public function addAction()
     {
-        return new Response("Cette page permettra l'ajout d'une nouvelle dépense à l'aide d'un formulaire.");
+        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
+
+        return new Response($content);
     }
 
     public function editAction($id)
     {
-        return new Response("Cette page permettra de modifier la dépense d'id " . $id . " à l'aide d'un formulaire.");
+        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
+
+        return new Response($content);
     }
 
     public function deleteAction($id)
     {
-        return new Response("Cette page permettra de supprimer la dépense d'id " . $id . ".");
+        $seeAllUrl = $this->get('router')->generate('paveldacar_accounts_keeper_expense_see_all');
+
+        return $this->redirect($seeAllUrl);
     }
 }

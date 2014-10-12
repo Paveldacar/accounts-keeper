@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dépenses</title>
-    <meta charset="utf-8">
-</head>
-<body>
-    <h1>Dépenses</h1>
-    <p>Cette page contiendra les dépenses effectuées au mois de {{ month }} {{ year }}.</p>
-    <p><a href="{{ path('paveldacar_accounts_keeper_expense_add') }}">Ajouter une dépense.</a></p>
-</body>
-</html>
+{%  extends 'PaveldacarAccountsKeeperBundle::layout.html.twig' %}
+
+{% block title %}{{ parent() }} - Dépenses{% endblock %}
+
+{% block body %}
+<h1>Dépenses - {{ month|capitalize }} {{ year }}</h1>
+<p>Cette page contiendra les dépenses effectuées au mois de {{ month }} {{ year }}.</p>
+<p><a href="{{ path('paveldacar_accounts_keeper_expense_add') }}">Ajouter une dépense.</a></p>
+{% endblock %}
