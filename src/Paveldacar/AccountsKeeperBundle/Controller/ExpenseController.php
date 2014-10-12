@@ -2,6 +2,7 @@
 
 namespace Paveldacar\AccountsKeeperBundle\Controller;
 
+use Paveldacar\AccountsKeeperBundle\Utils\DateFormatter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -9,33 +10,14 @@ class ExpenseController extends Controller
 {
     public function seeAllAction($month, $year)
     {
-        if ($month == null) {
-            $month = date('m');
-        }
+        /** @var DateFormatter $dateFormatter */
+        $dateFormatter = $this->get('paveldacar_accounts_keeper.date_formatter');
 
-        $month = $month - 1;
-
-        $months = [
-            'janvier',
-            'février',
-            'mars',
-            'avril',
-            'mai',
-            'juin',
-            'juillet',
-            'août',
-            'septembre',
-            'octobre',
-            'novembre',
-            'décembre'
-        ];
-
-        if ($year == null) {
-            $year = date('Y');
-        }
+        $month = $dateFormatter->getStringMonth($month);
+        $year = $dateFormatter->getCorrectYear($year);
 
         $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:seeAll.html.twig', [
-            'month' => $months[$month],
+            'month' => $month,
             'year'  => $year
         ]);
 

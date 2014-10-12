@@ -1,7 +1,8 @@
+#        arguments: [@service_id, "plain_value", %parameter%]
+
 parameters:
-#    paveldacar_accounts_keeper.example.class: Paveldacar\AccountsKeeperBundle\Example
+    paveldacar_accounts_keeper.date_formatter.class: Paveldacar\AccountsKeeperBundle\Utils\DateFormatter
 
 services:
-#    paveldacar_accounts_keeper.example:
-#        class: %paveldacar_accounts_keeper.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    paveldacar_accounts_keeper.date_formatter:
+        class: %paveldacar_accounts_keeper.date_formatter.class%
