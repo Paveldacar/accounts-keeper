@@ -3,6 +3,7 @@
 namespace Paveldacar\AccountsKeeperBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * ExpenseRepository
@@ -20,13 +21,44 @@ class ExpenseRepository extends EntityRepository
     public function findByMonth($month, $year){
         $queryBuilder = $this->createQueryBuilder('expense');
 
+        $this->filterByMonth($queryBuilder, $month, $year);
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @param string $month
+     * @param string $year
+     * @return array
+     */
+    public function countTotalByMont($month, $year)
+    {
+        $queryBuilder = $this->createQueryBuilder('expense');
+
+        $this->filterByMonth($queryBuilder, $month, $year);
+
+        $queryBuilder->select('SUM(expense.cost)');
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
+     * @param string $month
+     * @param string $year
+     * @return QueryBuilder
+     */
+    public function filterByMonth($queryBuilder, $month, $year)
+    {
         $queryBuilder->where('MONTH(expense.spentAt) = :month')
             ->andWhere('YEAR(expense.spentAt) = :year')
             ->setParameter('month', $month)
             ->setParameter('year', $year);
 
-        $query = $queryBuilder->getQuery();
-
-        return $query->getResult();
+        return $queryBuilder;
     }
 }

@@ -22,10 +22,13 @@ class ExpenseController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('PaveldacarAccountsKeeperBundle:Expense');
         $expenses = $repository->findByMonth($monthNumber, $year);
 
+        $total = $repository->countTotalByMont($monthNumber, $year);
+
         return $this->render('PaveldacarAccountsKeeperBundle:Expense:seeAll.html.twig', [
-            'month' => $month,
-            'year'  => $year,
-            'expenses' => $expenses
+            'month'    => $month,
+            'year'     => $year,
+            'expenses' => $expenses,
+            'total'    => $total
         ]);
     }
 

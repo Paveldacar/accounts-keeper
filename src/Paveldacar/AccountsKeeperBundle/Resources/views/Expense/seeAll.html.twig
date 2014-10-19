@@ -13,10 +13,13 @@
         {% for expense in expenses %}
             <tr>
                 <td>{{ expense.item }}</td>
-                <td>{{ expense.cost }}</td>
+                <td>{{ expense.cost|number_format(2, '.', ',') }} €</td>
             </tr>
         {% endfor %}
-        <tr></tr>
+        <tr>
+            <td><strong>TOTAL</strong></td>
+            <td><strong>{{ total|number_format(2, '.', ',') }} €</strong></td>
+        </tr>
     </table>
     <p><a href="{{ path('paveldacar_accounts_keeper_expense_add') }}">Ajouter une dépense.</a></p>
 {% endblock %}
