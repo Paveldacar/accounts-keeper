@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExpenseRepository extends EntityRepository
 {
+    /**
+     * @param string $month
+     * @param string $year
+     * @return array
+     */
+    public function findByMonth($month, $year){
+        $queryBuilder = $this->createQueryBuilder('expense');
+
+        $queryBuilder->where('MONTH(expense.spentAt) = :month')
+            ->andWhere('YEAR(expense.spentAt) = :year')
+            ->setParameter('month', $month)
+            ->setParameter('year', $year);
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 }

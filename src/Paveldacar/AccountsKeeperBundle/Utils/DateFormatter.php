@@ -25,14 +25,27 @@ class DateFormatter {
      * @param string $monthNumber
      * @return string
      */
-    public function getStringMonth($monthNumber) {
-        if ($monthNumber == null) {
-            $monthNumber = date('m');
-        }
+    public function getMonthString($monthNumber) {
+        $monthNumber = $this->getMonthNumber($monthNumber);
 
         $monthNumber--;
 
         return $this->months[$monthNumber];
+    }
+
+    /**
+     * Return either the month's number passed as argument if not null or the current month's number.
+     *
+     * @param string $monthNumber
+     * @return string
+     */
+    public function getMonthNumber($monthNumber)
+    {
+        if ($monthNumber == null) {
+            $monthNumber = date('m');
+        }
+
+        return $monthNumber;
     }
 
     /**
@@ -41,7 +54,7 @@ class DateFormatter {
      * @param string $yearNumber
      * @return string
      */
-    public function getCorrectYear($yearNumber)
+    public function getYear($yearNumber)
     {
         if ($yearNumber == null) {
             $yearNumber = date('Y');

@@ -2,6 +2,7 @@
 
 namespace Paveldacar\AccountsKeeperBundle\Controller;
 
+use Paveldacar\AccountsKeeperBundle\Entity\ExpenseRepository;
 use Paveldacar\AccountsKeeperBundle\Utils\DateFormatter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,15 +14,19 @@ class ExpenseController extends Controller
         /** @var DateFormatter $dateFormatter */
         $dateFormatter = $this->get('paveldacar_accounts_keeper.date_formatter');
 
-        $month = $dateFormatter->getStringMonth($month);
-        $year = $dateFormatter->getCorrectYear($year);
+        $monthNumber = $dateFormatter->getMonthNumber($month);
+        $month = $dateFormatter->getMonthString($month);
+        $year = $dateFormatter->getYear($year);
 
-        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:seeAll.html.twig', [
+        /** @var ExpenseRepository $repository */
+        $repository = $this->getDoctrine()->getManager()->getRepository('PaveldacarAccountsKeeperBundle:Expense');
+        $expenses = $repository->findByMonth($monthNumber, $year);
+
+        return $this->render('PaveldacarAccountsKeeperBundle:Expense:seeAll.html.twig', [
             'month' => $month,
-            'year'  => $year
+            'year'  => $year,
+            'expenses' => $expenses
         ]);
-
-        return new Response($content);
     }
 
     public function seeExpenseAction($id)

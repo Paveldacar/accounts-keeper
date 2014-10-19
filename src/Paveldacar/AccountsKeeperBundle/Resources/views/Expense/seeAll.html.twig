@@ -3,7 +3,20 @@
 {% block title %}{{ parent() }} - Dépenses{% endblock %}
 
 {% block body %}
-<h1>Dépenses - {{ month|capitalize }} {{ year }}</h1>
-<p>Cette page contiendra les dépenses effectuées au mois de {{ month }} {{ year }}.</p>
-<p><a href="{{ path('paveldacar_accounts_keeper_expense_add') }}">Ajouter une dépense.</a></p>
+    <h1>Dépenses - {{ month|capitalize }} {{ year }}</h1>
+    <p>Cette page contiendra les dépenses effectuées au mois de {{ month }} {{ year }}.</p>
+    <table>
+        <tr>
+            <th>Dépense</th>
+            <th>Coût</th>
+        </tr>
+        {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.item }}</td>
+                <td>{{ expense.cost }}</td>
+            </tr>
+        {% endfor %}
+        <tr></tr>
+    </table>
+    <p><a href="{{ path('paveldacar_accounts_keeper_expense_add') }}">Ajouter une dépense.</a></p>
 {% endblock %}

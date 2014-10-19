@@ -58,7 +58,14 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    datetime_functions:
+                        MONTH: Paveldacar\AccountsKeeperBundle\DQL\Month
+                        YEAR: Paveldacar\AccountsKeeperBundle\DQL\Year
+
 
 # Swiftmailer Configuration
 swiftmailer:
