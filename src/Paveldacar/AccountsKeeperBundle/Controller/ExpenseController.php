@@ -34,25 +34,19 @@ class ExpenseController extends Controller
 
     public function seeExpenseAction($id)
     {
-        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', [
+        return $this->render('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', [
             'id' => $id
         ]);
-
-        return new Response($content);
     }
 
     public function addAction()
     {
-        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
-
-        return new Response($content);
+        return $this->render('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
     }
 
     public function editAction($id)
     {
-        $content = $this->renderView('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
-
-        return new Response($content);
+        return $this->render('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
     }
 
     public function deleteAction($id)
