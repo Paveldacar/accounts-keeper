@@ -2,6 +2,7 @@
 
 namespace Paveldacar\AccountsKeeperBundle\Controller;
 
+use Paveldacar\AccountsKeeperBundle\Entity\Expense;
 use Paveldacar\AccountsKeeperBundle\Entity\ExpenseRepository;
 use Paveldacar\AccountsKeeperBundle\Utils\DateFormatter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -41,7 +42,13 @@ class ExpenseController extends Controller
 
     public function addAction()
     {
-        return $this->render('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
+        $expense = new Expense();
+
+        $form = $this->createForm('paveldacar_accountskeeperbundle_expense', $expense);
+
+        return $this->render('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
     public function editAction($id)

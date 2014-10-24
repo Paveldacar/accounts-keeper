@@ -2,7 +2,14 @@
 
 parameters:
     paveldacar_accounts_keeper.date_formatter.class: Paveldacar\AccountsKeeperBundle\Utils\DateFormatter
+    paveldacar_accounts_keeper.form.type.expense.class: Paveldacar\AccountsKeeperBundle\Form\ExpenseType
 
 services:
+    # Forms
+    paveldacar_accounts_keeper.form.type.expense:
+        class: %paveldacar_accounts_keeper.form.type.expense.class%
+        tags:
+            - { name: form.type, alias: paveldacar_accountskeeperbundle_expense }
+    # Utils
     paveldacar_accounts_keeper.date_formatter:
         class: %paveldacar_accounts_keeper.date_formatter.class%
