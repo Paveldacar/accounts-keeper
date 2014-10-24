@@ -43,6 +43,11 @@ class Expense
     private $item;
 
 
+    public function __construct()
+    {
+        $this->setSpentAt(new \DateTime());
+    }
+
     /**
      * Get id
      *
