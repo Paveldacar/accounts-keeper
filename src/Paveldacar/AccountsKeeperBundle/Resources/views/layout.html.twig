@@ -3,7 +3,7 @@
 <head>
     <title>{% block title %}Accounts Keeper{% endblock %}</title>
     <meta charset="utf-8">
-    {% stylesheets '@PaveldacarAccountsKeeperBundle/Resources/public/css/style.css' %}
+    {% stylesheets 'bundles/paveldacaraccountskeeper/css/*' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
     {% endstylesheets %}
 </head>
