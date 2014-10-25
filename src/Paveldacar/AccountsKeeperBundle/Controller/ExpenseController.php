@@ -35,7 +35,7 @@ class ExpenseController extends Controller
 
     public function seeExpenseAction($id)
     {
-        return $this->render('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', [
+        return $this->render('PaveldacarAccountsKeeperBundle:Expense:seeExpense.html.twig', [
             'id' => $id
         ]);
     }
@@ -53,7 +53,9 @@ class ExpenseController extends Controller
 
     public function editAction($id)
     {
-        return $this->render('PaveldacarAccountsKeeperBundle:Expense:add.html.twig', []);
+        return $this->render('PaveldacarAccountsKeeperBundle:Expense:edit.html.twig', [
+            'id' => $id
+        ]);
     }
 
     public function deleteAction($id)
